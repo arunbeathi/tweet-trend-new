@@ -15,10 +15,10 @@ environment{
         }
         stage('SonarQube analysis') {
     environment{
-       scannerHome = tool 'Adiyogi-sonar-scanner';
+       scannerHome = tool 'isha-sonar-scanner'
     }
     steps{
-    withSonarQubeEnv('Adiyogi-sonarqube-server') { // If you have configured more than one global server connection, you can specify its name
+    withSonarQubeEnv('isha-sonarqube-server') { // If you have configured more than one global server connection, you can specify its name
       sh "${scannerHome}/bin/sonar-scanner"
     }
     }
