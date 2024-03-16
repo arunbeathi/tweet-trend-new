@@ -14,7 +14,6 @@ pipeline {
     }
     
     }
-
     stage('SonarQube analysis') {
     environment {
     scannerHome = tool 'isha-sonar-scanner';
@@ -25,8 +24,8 @@ pipeline {
     }
     }
   }
-    }
 
+    }
 }
    
 
