@@ -4,18 +4,20 @@ pipeline {
             label 'maven'
         }
     }
+    }
+    stage('SonarQube analysis') {
     environment {
-        PATH = "/opt/apache-maven-3.9.6/bin:$PATH"
+    scannerHome = tool 'isha-sonar-scanner';
     }
-    stages{
-       stage ("build"){
-          steps{
-        sh 'mvn clean deploy'
+    steps{
+    withSonarQubeEnv('isha-sonarqube-server') { // If you have configured more than one global server connection, you can specify its name
+      sh "${scannerHome}/bin/sonar-scanner"
     }
-       }
+    }
+  }
 
-    }
-}
+    
+
    
 
 
