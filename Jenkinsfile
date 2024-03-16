@@ -4,7 +4,17 @@ pipeline {
             label 'maven'
         }
     }
-    stage('SonarQube analysis') {
+ environment {
+        PATH = "/opt/apache-maven-3.9.6/bin:$PATH"
+    }
+  stages{
+       stage ("build"){
+          steps{
+        sh 'mvn clean deploy'
+    }
+       }
+
+  stage('SonarQube analysis') {
     environment {
     scannerHome = tool 'isha-sonar-scanner';
     }
@@ -15,7 +25,7 @@ pipeline {
     }
   }
 }
-  
+}
 
     
 
